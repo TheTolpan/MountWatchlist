@@ -1,0 +1,12 @@
+## Interface: 120007,120100
+## Title: Mount Watchlist
+## Notes: Create a personal watchlist of uncollected mounts.
+## Author: Janis
+## Version: 0.3.0
+## SavedVariables: MountWatchlistDB
+## Category-enUS: Companions
+## IconTexture: Interface\Icons\Ability_Mount_RidingHorse
+
+Core.lua
+UI.lua
+Journal.lua

@@ -1,0 +1,34 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Lua tooling / temp files
+.luarc.json
+luac.out
+
+# Logs
+*.log
+
+# Release archives
+*.zip
+
+# Local release/build directories
+dist/
+release/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# WoW SavedVariables
+WTF/
+*.lua.bak
