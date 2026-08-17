@@ -13,3 +13,5 @@
 Core.lua
 UI.lua
 Journal.lua
+Settings.lua
+Minimap.lua

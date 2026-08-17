@@ -1,7 +1,7 @@
 local ADDON_NAME, MW = ...
 
 MountWatchlist = MW
-MW.version = "0.3.0"
+MW.version = "0.4.0"
 
 local SOURCE_TYPES = {
     [0] = "Other",
@@ -20,6 +20,9 @@ local SOURCE_TYPES = {
 }
 
 MW.SOURCE_TYPES = SOURCE_TYPES
+
+local eventFrame = CreateFrame("Frame")
+MW.eventFrame = eventFrame
 
 local function EnsureDB()
     if type(MountWatchlistDB) ~= "table" then
