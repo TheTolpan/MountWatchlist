@@ -1,6 +1,6 @@
 local _, MW = ...
 
-local ROW_HEIGHT = 48
+local ROW_HEIGHT = 50
 local FRAME_WIDTH = 900
 local FRAME_HEIGHT = 760
 local LEFT_X = 16
@@ -92,6 +92,12 @@ local function InitializeRow(row, trackedMode, width)
     row.source:SetPoint("RIGHT", -72, 0)
     row.source:SetJustifyH("LEFT")
 
+    -- Important: rows have a fixed height, so source text must never wrap
+    row.source:SetWordWrap(false)
+    row.source:SetNonSpaceWrap(false)
+    row.source:SetMaxLines(1)
+    row.source:SetHeight(12)
+
     row.action = CreateFrame("Button", nil, row, "UIPanelButtonTemplate")
     row.action:SetSize(62, 24)
     row.action:SetPoint("RIGHT", -4, 0)
@@ -167,10 +173,20 @@ local function SetRowData(row, mount, trackedMode, width)
         row.category:SetText("|cffaaaaaa" .. mount.sourceCategory .. "|r")
     end
 
-    local source = (mount.sourceText or ""):gsub("\n", " ")
-    if #source > 68 then
-        source = source:sub(1, 65) .. "..."
+    local source = mount.sourceText or ""
+
+    -- Collapse Blizzard's multiline source information into one compact list line.
+    source = source:gsub("|n", " ")
+    source = source:gsub("\r", " ")
+    source = source:gsub("\n", " ")
+    source = source:gsub("%s+", " ")
+    source = source:gsub("^%s+", "")
+    source = source:gsub("%s+$", "")
+
+    if #source > 62 then
+        source = source:sub(1, 59) .. "..."
     end
+
     row.source:SetText(source)
 
     if trackedMode then
@@ -309,6 +325,12 @@ function MW:Refresh()
     SetListData(frame.availableList, availableData)
     SetListData(frame.trackedList, trackedData)
 
+    if frame.removeCollectedCheckbox then
+        frame.removeCollectedCheckbox:SetChecked(
+            MountWatchlistDB.removeCollected == true
+        )
+    end
+
     if selectedMountID then
         self:ShowDetails(selectedMountID)
     elseif trackedData[1] then
@@ -389,6 +411,7 @@ function MW:InitializeUI()
     end)
 
     local removeCollected = CreateFrame("CheckButton", nil, details, "UICheckButtonTemplate")
+    frame.removeCollectedCheckbox = removeCollected
     removeCollected:SetPoint("TOPRIGHT", frame.detailsAction, "BOTTOMRIGHT", 0, -10)
     removeCollected:SetChecked(MountWatchlistDB.removeCollected)
     removeCollected.text = removeCollected:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")

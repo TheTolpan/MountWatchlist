@@ -8,6 +8,11 @@ function MW:UpdateJournalButton()
         return
     end
 
+    if MountWatchlistDB.showJournalButton == false then
+        journalButton:Hide()
+        return
+    end
+
     local mountID = MountJournal.selectedMountID
     if not mountID then
         journalButton.mountID = nil

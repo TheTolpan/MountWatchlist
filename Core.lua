@@ -21,9 +21,6 @@ local SOURCE_TYPES = {
 
 MW.SOURCE_TYPES = SOURCE_TYPES
 
-local eventFrame = CreateFrame("Frame")
-MW.eventFrame = eventFrame
-
 local function EnsureDB()
     if type(MountWatchlistDB) ~= "table" then
         MountWatchlistDB = {}
@@ -35,6 +32,14 @@ local function EnsureDB()
 
     if MountWatchlistDB.removeCollected == nil then
         MountWatchlistDB.removeCollected = true
+    end
+
+    if MountWatchlistDB.showMinimapButton == nil then
+        MountWatchlistDB.showMinimapButton = true
+    end
+
+    if MountWatchlistDB.showJournalButton == nil then
+        MountWatchlistDB.showJournalButton = true
     end
 end
 
@@ -201,7 +206,10 @@ eventFrame:SetScript("OnEvent", function(_, event, arg1)
     if event == "ADDON_LOADED" then
         if arg1 == ADDON_NAME then
             EnsureDB()
+
             MW:InitializeUI()
+            MW:InitializeSettings()
+            MW:InitializeMinimapButton()
 
             if C_AddOns and C_AddOns.IsAddOnLoaded and C_AddOns.IsAddOnLoaded("Blizzard_Collections") then
                 MW:SetupJournalIntegration()

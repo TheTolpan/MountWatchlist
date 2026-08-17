@@ -2,10 +2,13 @@
 ## Title: Mount Watchlist
 ## Notes: Create a personal watchlist of uncollected mounts.
 ## Author: Janis
-## Version: 0.3.0
+## Version: 0.4.0
 ## SavedVariables: MountWatchlistDB
 ## Category-enUS: Companions
 ## IconTexture: Interface\Icons\Ability_Mount_RidingHorse
+## AddonCompartmentFunc: MountWatchlist_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: MountWatchlist_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: MountWatchlist_OnAddonCompartmentLeave
 
 Core.lua
 UI.lua

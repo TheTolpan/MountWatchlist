@@ -15,6 +15,32 @@ and this project uses semantic versioning where practical.
 
 ---
 
+
+## [0.4.0] - 2026-08-17
+
+### Added
+
+- Added a minimap button for quickly opening Mount Watchlist.
+- Added right-click access to the Mount Watchlist settings from the minimap button.
+- Added support for dragging and repositioning the minimap button.
+- Added a Mount Watchlist category to the World of Warcraft AddOns settings menu.
+- Added settings for:
+  - Automatically removing collected mounts from the watchlist.
+  - Showing or hiding the minimap button.
+  - Showing or hiding the Watch Mount button in the Mount Journal.
+- Added Addon Compartment integration for quick access to Mount Watchlist and its settings.
+
+### Changed
+
+- Synced the "Remove when collected" option between the main Mount Watchlist window and the AddOns settings menu.
+- Improved the compact mount list layout so source information stays within a single row.
+
+### Fixed
+
+- Fixed long mount source text wrapping into neighboring mount rows.
+- Fixed overlapping text in the uncollected mounts list for mounts with multiple source details such as vendor, zone, profession, or promotion information.
+
+
 ## [0.3.0] - 2026-08-17
 
 ### Added

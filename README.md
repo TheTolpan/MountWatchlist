@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="assets/logo.png" width="180" alt="Mount Watchlist Logo">
-</p>
+![Mount Watchlist Logo](assets/logo.png)
 
 # Mount Watchlist
 
